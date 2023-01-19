@@ -1,4 +1,4 @@
-package lambda;
+package org.example.lambda;
 interface interf{
     void m1();
 }

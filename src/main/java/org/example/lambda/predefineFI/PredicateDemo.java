@@ -1,4 +1,4 @@
-package lambda.predefineFI;
+package org.example.lambda.predefineFI;
 
 import java.util.function.Predicate;
 

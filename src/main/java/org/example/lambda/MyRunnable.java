@@ -1,4 +1,4 @@
-package lambda;
+package org.example.lambda;
 
 /*
 public class MyRunnable implements Runnable{
