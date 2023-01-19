@@ -1,8 +1,10 @@
 package org.example.streamApi;
 
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author Kapil Kaushik on 18/01/23
@@ -22,7 +24,7 @@ public class StreamExample {
     public static void main(String[] args) {
         ArrayList<Integer> list = new ArrayList<>();
         for (int i = 0; i < 10; i++) list.add(i * i);
-        System.out.println(list);
+        //System.out.println(list);
 
         // copy only even numbers into another list
 
@@ -33,14 +35,14 @@ public class StreamExample {
                 evenList.add(value);
             }
         }
-        System.out.println("even list without stream " + evenList);
+        //System.out.println("even list without stream " + evenList);
 
         // clear list
         evenList.clear();
 
         // with streams
         evenList = list.stream().filter(i -> i % 2 == 0).collect(Collectors.toList());
-        System.out.println("even list with stream " + evenList);
+        //System.out.println("even list with stream " + evenList);
 
         // add 2 in every element of list
 
@@ -55,7 +57,7 @@ public class StreamExample {
          *   map takes function interface obj
          */
 
-        System.out.println("add 2 " + addedList);
+        //System.out.println("add 2 " + addedList);
 
         // processing by collect()
         // this () collect elements from stream and added to specific collection
@@ -78,8 +80,10 @@ public class StreamExample {
         List<String> out = list1.stream().filter(s -> s.length() >= 6).collect(Collectors.toList()); // return a filtered list
         List<String> out1 = list1.stream().map(String::toUpperCase).collect(Collectors.toList()); // return a modified list
 
+        // count()
         long count = list1.stream().filter(s -> s.length() >= 10).count(); // return count whose length is >=10
 
+        // sorted()
         List<Integer> sorted = list2.stream().sorted().collect(Collectors.toList()); // default sorting increasing order
 
         Comparator<Integer> comparator = (a, b) -> {
@@ -94,8 +98,27 @@ public class StreamExample {
 
         List<Integer> sorted3 = list2.stream().sorted(comparator).collect(Collectors.toList()); // to change sorting order
 
+        // min() and max()
+        // get minimum and maximum value of list using stream
+        int min = list2.stream().min(Integer::compareTo).get();
+        int max = list2.stream().max(Integer::compareTo).get();
 
-        System.out.println(sorted);
+        // forEach()
+        Consumer<Integer> con = System.out::println; // equivalent to (a) -> System.out.println(a)
+        //list2.forEach(con);
+
+        // toArray()
+        Integer[] arr = list2.stream().toArray(Integer[]::new); // list2.toArray(new Integer[0]); using collections
+        //System.out.println(Arrays.toString(arr));
+
+        // Stream.of () convert group of elements to stream or non-collections
+        Stream<Integer> ss = Stream.of(1,2,3,4,5,6,7,8,9,0);
+        //ss.forEach(System.out::println);
+
+        // Stream for arrays
+        Integer array[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
+        //Stream.of(array).forEach(System.out::println);
+
 
     }
 }
