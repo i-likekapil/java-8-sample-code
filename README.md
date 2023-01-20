@@ -10,6 +10,7 @@
 * Function and all types
 * Consumer
 * Supplier
+* primitive functional interfaces
 * double colon Operator
 * Streams
 * Method reference & Constructor reference
