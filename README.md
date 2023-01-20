@@ -6,8 +6,8 @@
 * Functional Interfaces
 * Default methods inside Interfaces
 * Static methods inside Interfaces
-* Predicate
-* Function
+* Predicate and all types
+* Function and all types
 * Consumer
 * Supplier
 * double colon Operator
